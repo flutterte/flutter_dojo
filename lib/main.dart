@@ -1,5 +1,6 @@
 import 'dart:io';
 
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_dojo/category/backend/providercategory.dart';
@@ -22,8 +23,15 @@ void main() async {
           Provider(create: (_) => 1008),
           ChangeNotifierProvider(create: (_) => ChangeNotifyModel()),
           ChangeNotifierProvider(create: (_) => CollectProvider()),
-       /*   ValueListenableProvider<ValueNotifyModel>(
-            create: (_) => ValueNotifyModelWrapper(ValueNotifyModel(0)),
+    ValueListenableProvider.value(updateShouldNotify:  (previous, current) => previous.value != current.value,
+      value:  ValueNotifyModelWrapper(ValueNotifyModel(0)),
+      // value: (_) => ValueNotifyModelWrapper(ValueNotifyModel(0)),
+      // updateShouldNotify: (previous, current) => previous.value != current.value,
+
+    ),
+
+         /*ValueListenableProvi<ValueNotifyModel>(
+            value: (_) => ValueNotifyModelWrapper(ValueNotifyModel(0)),
             updateShouldNotify: (previous, current) => previous.value != current.value,
           ),*/
           StreamProvider<int>(

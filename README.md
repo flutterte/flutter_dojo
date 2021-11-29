@@ -1,5 +1,19 @@
-#适配flutter 2.6 gradle7.0.2
+# 适配flutter 2.6 gradle7.0.2
 https://github.com/qssq/flutter_dojo
+
+升级主要包括如下内容
+flutter 在2.6版本运行
+改动AndroidManifest.xml
+改动activity，删除不需要写的代码和修改application入口为aplicationnID变量
+
+改动pubspect.yaml
+升级大量的插件版本，内核版本
+如dio provider
+升级按钮RaiseButton按钮
+升级text属性变成label属性。
+升级gradle 版本
+修复了大量api失效问题，还有大量TextButton文本控件字段属性实在太多，懒得修改了，而且我也不会。
+
 # Flutter Dojo
 [![license](https://img.shields.io/badge/License-GPL-yellow.svg)](https://opensource.org/licenses/gpl-license)  ![Flutter dojo Release apk](https://github.com/xuyisheng/flutter_dojo/workflows/Flutter%20dojo%20Release%20apk/badge.svg)
 
