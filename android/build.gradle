@@ -1,0 +1,48 @@
+buildscript {
+    ext.kotlin_version = '1.5.30'
+    repositories {
+        google()
+        jcenter()
+        maven {
+            url "http://download.flutter.io"
+            allowInsecureProtocol true
+        }
+        mavenCentral()
+    }
+
+    dependencies {
+        classpath 'com.android.tools.build:gradle:7.0.2'
+        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
+    }
+}
+
+allprojects {
+    repositories {
+        google()
+        jcenter()
+//        maven {
+                // 判断属性是否存在，之后再设置
+//                    allowInsecureProtocol true
+//            url "http://download.flutter.io"
+//           }
+        mavenCentral()
+
+        maven{url 'https://maven.aliyun.com/repository/google' }
+        maven{ url 'https://maven.aliyun.com/repository/jcenter' }
+        maven{ url 'https://maven.aliyun.com/repository/gradle-plugin' }
+        maven {  url "https://jitpack.io" }
+        jcenter()
+    }
+}
+
+rootProject.buildDir = '../build'
+subprojects {
+    project.buildDir = "${rootProject.buildDir}/${project.name}"
+}
+subprojects {
+    project.evaluationDependsOn(':app')
+}
+
+task clean(type: Delete) {
+    delete rootProject.buildDir
+}
