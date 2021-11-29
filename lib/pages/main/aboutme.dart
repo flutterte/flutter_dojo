@@ -5,7 +5,13 @@ const githubUrl = 'https://github.com/qssq/flutter_dojo';
 const emailUrl = 'mailto:xuyisheng89@163.com?subject=Hello';
 const messageUrl = 'sms:13641719651';
 void main(){
-  runApp(new AboutMeWidget());
+  //flutter 报错之 No MediaQuery widget found.  Scaffold 必须放在material app里面
+  runApp(new MaterialApp(
+      title: 'Hello World',
+      theme: new ThemeData(
+        primarySwatch: Colors.blue,
+      ),
+      home:AboutMeWidget()));
 }
 
 class AboutMeWidget extends StatelessWidget {
