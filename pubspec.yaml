@@ -13,7 +13,7 @@ description: A new Flutter application.
 # https://developer.apple.com/library/archive/documentation/General/Reference/InfoPlistKeyReference/Articles/CoreFoundationKeys.html
 version: 3.1.0+3
 
-environment:
+environment: #https://www.jianshu.com/p/59e5ddba2f37 可空的配置在这里 sdk: ">=2.12.0 <3.0.0" //sdk >=2.12.0表示开启空安全检查
   sdk: ">=2.8.0 <3.0.0"
 
 dependencies:
@@ -55,7 +55,6 @@ flutter:
   # included with your application, so that you can use the icons in
   # the material Icons class.
   uses-material-design: true
-
   assets:
     - assets/images/
     - assets/json/

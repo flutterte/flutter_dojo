@@ -9,14 +9,18 @@ class TextFormFieldWidget extends StatefulWidget {
 }
 
 class _TextFormFieldWidgetState extends State<TextFormFieldWidget> {
-  final GlobalKey<FormFieldState<String>> _passwordFieldKey = GlobalKey<FormFieldState<String>>();
+  final GlobalKey<FormFieldState<String>> _passwordFieldKey =
+      GlobalKey<FormFieldState<String>>();
 
   String _password;
+
+  get AutocompleteOptionsBuilder => (e) {};
 
   String _validateName(String value) {
     if (value.isEmpty) return 'Name is required.';
     final RegExp nameExp = RegExp(r'^[A-Za-z ]+$');
-    if (!nameExp.hasMatch(value)) return 'Please enter only alphabetical characters.';
+    if (!nameExp.hasMatch(value))
+      return 'Please enter only alphabetical characters.';
     return null;
   }
 
@@ -53,7 +57,8 @@ class _TextFormFieldWidgetState extends State<TextFormFieldWidget> {
           onSaved: (String value) {},
           // TextInputFormatters are applied in sequence.
           inputFormatters: <TextInputFormatter>[
-            FilteringTextInputFormatter.digitsOnly, //WhitelistingTextInputFormatter(RegExp("[0-9]"))
+            FilteringTextInputFormatter
+                .digitsOnly, //WhitelistingTextInputFormatter(RegExp("[0-9]"))
           ],
         ),
         SizedBox(height: 24.0),
@@ -85,7 +90,11 @@ class _TextFormFieldWidgetState extends State<TextFormFieldWidget> {
         TextFormField(
           keyboardType: TextInputType.number,
           decoration: const InputDecoration(
-              border: OutlineInputBorder(), labelText: 'Salary', prefixText: '\$', suffixText: 'USD', suffixStyle: TextStyle(color: Colors.green)),
+              border: OutlineInputBorder(),
+              labelText: 'Salary',
+              prefixText: '\$',
+              suffixText: 'USD',
+              suffixStyle: TextStyle(color: Colors.green)),
           maxLines: 1,
         ),
         SizedBox(height: 24.0),
@@ -112,6 +121,9 @@ class _TextFormFieldWidgetState extends State<TextFormFieldWidget> {
           maxLength: 8,
           obscureText: true,
         ),
+        Autocomplete(
+          optionsBuilder: (TextEditingValue textEditingValue) {},
+        )
       ],
     );
   }
