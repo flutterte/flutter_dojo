@@ -1,6 +1,6 @@
 import 'dart:io';
 
-import 'package:flutter/foundation.dart';
+// import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_dojo/category/backend/providercategory.dart';
@@ -16,21 +16,25 @@ import 'category/backend/pageroute.dart';
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await SpUtil.getInstance();
-  await SystemChrome.setPreferredOrientations(<DeviceOrientation>[DeviceOrientation.portraitUp, DeviceOrientation.portraitDown]).then((_) {
+  await SystemChrome.setPreferredOrientations(<DeviceOrientation>[
+    DeviceOrientation.portraitUp,
+    DeviceOrientation.portraitDown
+  ]).then((_) {
     runApp(
       MultiProvider(
         providers: [
           Provider(create: (_) => 1008),
           ChangeNotifierProvider(create: (_) => ChangeNotifyModel()),
           ChangeNotifierProvider(create: (_) => CollectProvider()),
-    ValueListenableProvider.value(updateShouldNotify:  (previous, current) => previous.value != current.value,
-      value:  ValueNotifyModelWrapper(ValueNotifyModel(0)),
-      // value: (_) => ValueNotifyModelWrapper(ValueNotifyModel(0)),
-      // updateShouldNotify: (previous, current) => previous.value != current.value,
+          ValueListenableProvider.value(
+            updateShouldNotify: (previous, current) =>
+                previous.value != current.value,
+            value: ValueNotifyModelWrapper(ValueNotifyModel(0)),
+            // value: (_) => ValueNotifyModelWrapper(ValueNotifyModel(0)),
+            // updateShouldNotify: (previous, current) => previous.value != current.value,
+          ),
 
-    ),
-
-         /*ValueListenableProvi<ValueNotifyModel>(
+          /*ValueListenableProvi<ValueNotifyModel>(
             value: (_) => ValueNotifyModelWrapper(ValueNotifyModel(0)),
             updateShouldNotify: (previous, current) => previous.value != current.value,
           ),*/
@@ -49,7 +53,7 @@ void main() async {
 
 SystemUiOverlayStyle setNavigationBarTextColor(bool light) {
   return SystemUiOverlayStyle(
-    systemNavigationBarColor: Colors.black,
+    systemNavigationBarColor: light ? Colors.white : Colors.black,
     systemNavigationBarDividerColor: null,
     systemNavigationBarIconBrightness: Brightness.light,
     statusBarColor: null,
@@ -64,7 +68,8 @@ class MyApp extends StatelessWidget {
     if (Platform.isAndroid) {
       // 在组件渲染之后，再覆写状态栏颜色
       // 如果使用了APPBar，则需要修改brightness属性
-      SystemUiOverlayStyle systemUiOverlayStyle = SystemUiOverlayStyle(statusBarColor: Colors.transparent);
+      SystemUiOverlayStyle systemUiOverlayStyle =
+          SystemUiOverlayStyle(statusBarColor: Colors.transparent);
       SystemChrome.setSystemUIOverlayStyle(systemUiOverlayStyle);
     }
     return MaterialApp(
@@ -89,7 +94,7 @@ class NewHome extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return AnnotatedRegion<SystemUiOverlayStyle>(
-      value: setNavigationBarTextColor(true),
+      value: setNavigationBarTextColor(false),
       child: Scaffold(
         body: SplashPage(),
       ),

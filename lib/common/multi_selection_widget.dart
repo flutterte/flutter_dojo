@@ -44,6 +44,7 @@ class _MultiSelectionWidgetState extends State<MultiSelectionWidget> {
             ),
           )
         : SingleChildScrollView(
+            //水平滚动view
             scrollDirection: Axis.horizontal,
             child: Row(
               children: widget.items.map((value) {

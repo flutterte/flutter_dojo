@@ -5,13 +5,16 @@ class TestAnim2Widget extends StatefulWidget {
   _TestAnim2WidgetState createState() => _TestAnim2WidgetState();
 }
 
-class _TestAnim2WidgetState extends State<TestAnim2Widget> with SingleTickerProviderStateMixin {
+class _TestAnim2WidgetState extends State<TestAnim2Widget>
+    with SingleTickerProviderStateMixin {
   AnimationController controller;
 
   @override
   void initState() {
     super.initState();
-    controller = AnimationController(vsync: this, duration: Duration(seconds: 1))..forward();
+    controller =
+        AnimationController(vsync: this, duration: Duration(seconds: 1))
+          ..forward();
   }
 
   @override
@@ -128,7 +131,8 @@ class AnimCategoryContainer extends StatefulWidget {
   _AnimCategoryContainerState createState() => _AnimCategoryContainerState();
 }
 
-class _AnimCategoryContainerState extends State<AnimCategoryContainer> with SingleTickerProviderStateMixin {
+class _AnimCategoryContainerState extends State<AnimCategoryContainer>
+    with SingleTickerProviderStateMixin {
   bool isExpanded;
   AnimationController controller;
   Animation<EdgeInsetsGeometry> marginAnim;
@@ -138,7 +142,8 @@ class _AnimCategoryContainerState extends State<AnimCategoryContainer> with Sing
   void initState() {
     super.initState();
     isExpanded = false;
-    controller = AnimationController(vsync: this, duration: Duration(milliseconds: 200));
+    controller =
+        AnimationController(vsync: this, duration: Duration(milliseconds: 200));
     marginAnim = Tween(
       begin: EdgeInsets.symmetric(horizontal: 16),
       end: EdgeInsets.zero,
@@ -213,7 +218,8 @@ class _AnimCategoryContainerState extends State<AnimCategoryContainer> with Sing
       child: isExpanded || controller.isDismissed
           ? Column(
               children: [
-                for (final demo in widget.categoryBean.categoryItems) AnimCategoryItem(demo),
+                for (final demo in widget.categoryBean.categoryItems)
+                  AnimCategoryItem(demo),
                 const SizedBox(height: 12),
               ],
             )

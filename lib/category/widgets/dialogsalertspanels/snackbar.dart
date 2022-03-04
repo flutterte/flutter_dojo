@@ -8,7 +8,8 @@ class SnackBarWidget extends StatelessWidget {
     return ListView(
       children: <Widget>[
         MainTitleWidget('SnackBar基本使用'),
-        SubtitleWidget('SnackBarAction: A button for a [SnackBar], known as an \"action\".'),
+        SubtitleWidget(
+            'SnackBarAction: A button for a [SnackBar], known as an \"action\".'),
         ElevatedButton(
           onPressed: () {
             final snackBar = SnackBar(
